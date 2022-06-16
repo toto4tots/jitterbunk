@@ -1,0 +1,29 @@
+{% extends "bunks/base.html" %}
+
+
+
+{% block title %}
+<title>Jitterbunk</title>
+{% endblock %}
+
+{% block content %}
+<section class="animate-fade">
+    <h1 class="main-title">Ya Got Bunked!</h1>
+    <p>Time in UTC</p>
+    
+    
+    <ol reversed>
+        {% for bunk in bunks %}
+        <li>
+            <a href="{%url 'profile' user_id=bunk.from_user.id%}">{{bunk.from_user.username}}</a> 
+            bunked
+            <a href="{%url 'profile' user_id=bunk.to_user.id%}">{{bunk.to_user.username}}</a>
+            at {{bunk.time.time}} on {{bunk.time.date}}
+        </li>
+        {% endfor %}
+    </ol>
+</section>
+
+
+{% endblock %}
+

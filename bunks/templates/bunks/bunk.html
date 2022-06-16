@@ -1,0 +1,15 @@
+{% extends "bunks/base.html" %}
+
+{% block title %}
+<title>Bunk Someone!</title>
+{% endblock %}
+
+{% block content %}
+<h1>Send a Bunk</h1>
+<b>Note that the usernames must be exact!</b>
+<form class="bunk-form" action="{% url 'bunk'%}" method="POST">
+    {% csrf_token %}
+    {{form}}
+    <button type="submit">Send!</button>
+</form>
+{% endblock %}

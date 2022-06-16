@@ -1,0 +1,45 @@
+.content {
+    /* width: 200px; */
+    display: grid;
+    justify-content: center;
+}
+
+.main-title {
+    font-size: 100px;
+}
+
+.nav {
+    padding:20px;
+    border-style: dotted;
+}
+
+li {
+    list-style-type: none;
+}
+
+.profile-picture {
+    margin: 20px;
+    width: 45%;
+    height: auto;
+
+}
+
+.bunk-form {
+    margin-top: 10px;
+}
+
+.animate-fade {
+animation-duration: 1.0s;
+animation-name: animate-fade;
+animation-fill-mode: backwards;
+animation-delay: 0.15s;
+}
+
+@keyframes animate-fade {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 100%
+    }
+}

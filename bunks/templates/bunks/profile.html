@@ -1,0 +1,49 @@
+{% extends "bunks/base.html" %}
+
+{% block title %}
+<title>{{user.username}}'s profile</title>
+{% endblock %}
+
+{% block content %}
+
+    <img class="profile-picture" src="{{user.photo}}" alt="{{user.username}}'s profile picture">
+    <h1>{{user.username}}</h1>
+    <p>Time in UTC</p>
+    <section>
+        <h2>Got Bunked By:</h2>
+        {% if bunked_user.count %}
+        <ol reversed>
+            {% for bunk in bunked_user %}
+            <li>
+                <a href="{%url 'profile' user_id=bunk.from_user.id%}">{{bunk.from_user.username}}</a> 
+                at {{bunk.time.time}} on {{bunk.time.date}}
+            </li>
+            {% endfor %}
+        </ol reversed>
+        {% else %}
+            <ul>
+                <li>No One Yet!</li>
+            </ul>
+        {% endif %}
+    </section>
+    <section>
+        <h2>Bunked:</h2>
+        {% if user_bunked.count %}
+        <ol>
+            {% for bunk in user_bunked %}
+            <li>
+                <a href="{%url 'profile' user_id=bunk.from_user.id%}">{{bunk.to_user.username}}</a> 
+                at {{bunk.time.time}} on {{bunk.time.date}}
+            </li>
+            {% endfor %}
+        </ol>
+        {% else %}
+            <ul>
+                <li>No One Yet!</li>
+            </ul>
+        {% endif %}
+    </section>
+
+
+
+{% endblock %}
